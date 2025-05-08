@@ -161,6 +161,38 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
+/* Fix for button hover text visibility */
+button {
+  position: relative;
+  overflow: visible;
+}
+
+button span, 
+button div, 
+button svg + span {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease, visibility 0.2s;
+}
+
+button:hover span, 
+button:hover div, 
+button:hover svg + span {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Fix for outline-style buttons */
+button[class*="outline"] span,
+button[class*="ghost"] span {
+  color: inherit;
+}
+
+button[class*="outline"]:hover span,
+button[class*="ghost"]:hover span {
+  color: inherit;
+}
+
 /* Responsive design fixes */
 @media (max-width: 768px) {
   .dashboard-panel {
