@@ -1,8 +1,7 @@
 
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -43,6 +42,7 @@
 
 .card:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
 .read-the-docs {
@@ -77,6 +77,11 @@
   border: 1px solid rgba(124, 58, 237, 0.1);
 }
 
+.dark .dashboard-card {
+  background: linear-gradient(145deg, #222, #333);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
 .dashboard-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 14px 28px rgba(124, 58, 237, 0.1);
@@ -91,6 +96,11 @@
 .appointment-card {
   border-left: 4px solid #8b5cf6;
   background-color: white;
+}
+
+.dark .appointment-card {
+  background-color: #222;
+  border-left: 4px solid #8b5cf6;
 }
 
 .appointment-card.current {
@@ -119,23 +129,50 @@
   justify-content: center;
   font-weight: bold;
   color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Enhanced Sidebar */
 .sidebar-enhanced {
   background: linear-gradient(180deg, #7c3aed, #6d28d9);
   border-right: none;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.dark .sidebar-enhanced {
+  background: linear-gradient(180deg, #4c1d95, #381e72);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-enhanced .menu-item {
   border-radius: 8px;
   margin: 0.3rem 0.5rem;
   transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-enhanced .menu-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(3px);
 }
 
 .sidebar-enhanced .active {
   background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design fixes */
+@media (max-width: 768px) {
+  .dashboard-panel {
+    padding: 0.5rem;
+  }
+  
+  .card {
+    padding: 1em;
+  }
+  
+  .dashboard-header {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
 }

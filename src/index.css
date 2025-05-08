@@ -35,13 +35,13 @@
 
     --radius: 1rem;
 
-    --sidebar-background: 262 83% 15%;
+    --sidebar-background: 262 83% 18%;
     --sidebar-foreground: 240 5.3% 99%;
     --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 262 83% 20%;
+    --sidebar-accent: 262 83% 25%;
     --sidebar-accent-foreground: 240 5.9% 98%;
-    --sidebar-border: 262 83% 25%;
+    --sidebar-border: 262 83% 28%;
     --sidebar-ring: 262 83% 58%;
   }
 
@@ -78,9 +78,9 @@
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 262 15% 20%;
+    --sidebar-accent: 262 15% 25%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 262 15% 20%;
+    --sidebar-border: 262 15% 25%;
     --sidebar-ring: 262 83% 58%;
   }
 }
@@ -93,15 +93,29 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Improved scrollbar for better dark mode visibility */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/50;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+  }
 }
 
 @layer components {
   .card-gradient {
-    @apply bg-gradient-to-br from-card to-secondary/80 shadow-md;
+    @apply bg-gradient-to-br from-card to-secondary/80 shadow-md dark:shadow-lg dark:shadow-primary/5;
   }
   
   .glass-card {
-    @apply bg-white/80 backdrop-blur-sm shadow-lg border border-white/20 rounded-xl;
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-lg border border-white/20 dark:border-gray-800/30 rounded-xl;
   }
   
   .hover-scale {
@@ -113,15 +127,15 @@
   }
   
   .dashboard-panel {
-    @apply rounded-xl bg-white shadow-lg border border-border/30 overflow-hidden;
+    @apply rounded-xl bg-white dark:bg-gray-800 shadow-lg border border-border/30 dark:border-gray-700/30 overflow-hidden;
   }
   
   .dashboard-panel-header {
-    @apply bg-primary/5 p-4 border-b border-border/30;
+    @apply bg-primary/5 dark:bg-primary/10 p-4 border-b border-border/30 dark:border-gray-700/30;
   }
   
   .appointment-item {
-    @apply border-l-4 p-3 my-2 bg-white rounded-r-lg shadow-sm transition-all hover:translate-x-1;
+    @apply border-l-4 p-3 my-2 bg-white dark:bg-gray-800 rounded-r-lg shadow-sm transition-all hover:translate-x-1;
   }
   
   .appointment-current {
@@ -134,5 +148,29 @@
   
   .appointment-past {
     @apply border-l-muted;
+  }
+  
+  /* New responsive classes for mobile devices */
+  .mobile-menu-button {
+    @apply md:hidden p-2 rounded-md hover:bg-primary/10;
+  }
+  
+  .mobile-hidden {
+    @apply hidden md:block;
+  }
+  
+  /* Card hover effects with shadows */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:translate-y-[-2px];
+  }
+  
+  /* Icon containers */
+  .icon-container {
+    @apply flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary;
+  }
+  
+  /* Interactive buttons with hover effects */
+  .interactive-button {
+    @apply transition-all hover:shadow-md hover:scale-105;
   }
 }
