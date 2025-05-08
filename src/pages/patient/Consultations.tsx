@@ -2,29 +2,31 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, User } from "lucide-react";
+import { Calendar, Clock, User, FileText } from "lucide-react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
 const PatientConsultations = () => {
   return (
     <DashboardLayout role="patient">
-      <div className="space-y-6">
+      <div className="space-y-6 animate-fade-in">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Mes Consultations</h2>
+          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Mes Consultations
+          </h2>
           <p className="text-muted-foreground">
             Historique et prochaines consultations
           </p>
         </div>
 
         {/* Upcoming consultations */}
-        <Card>
-          <CardHeader>
+        <Card className="overflow-hidden border-2 border-primary/10 shadow-lg rounded-xl">
+          <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5">
             <CardTitle>Consultations à venir</CardTitle>
             <CardDescription>
               Vos prochains rendez-vous médicaux
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-6">
             <div className="space-y-4">
               {[
                 {
@@ -42,7 +44,10 @@ const PatientConsultations = () => {
                   status: "En attente"
                 }
               ].map((appointment, i) => (
-                <div key={i} className="flex items-center border rounded-lg p-3">
+                <div 
+                  key={i} 
+                  className="flex items-center border rounded-xl p-4 hover:shadow-md transition-all duration-200 hover:border-primary/30 bg-gradient-to-r from-white to-secondary/30"
+                >
                   <div className="bg-primary/10 p-3 rounded-full mr-4">
                     <Calendar className="h-6 w-6 text-primary" />
                   </div>
@@ -54,12 +59,15 @@ const PatientConsultations = () => {
                       {appointment.date}, {appointment.time}
                     </div>
                   </div>
-                  <Badge variant={appointment.status === "Confirmé" ? "default" : "secondary"}>
+                  <Badge 
+                    variant={appointment.status === "Confirmé" ? "default" : "secondary"} 
+                    className="rounded-full px-3 py-1"
+                  >
                     {appointment.status}
                   </Badge>
                 </div>
               ))}
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full rounded-xl border-2 border-primary/20 hover:border-primary/50 shadow-sm">
                 Prendre un nouveau rendez-vous
               </Button>
             </div>
@@ -67,42 +75,48 @@ const PatientConsultations = () => {
         </Card>
 
         {/* Past consultations */}
-        <Card>
-          <CardHeader>
+        <Card className="overflow-hidden border-2 border-primary/10 shadow-lg rounded-xl">
+          <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5">
             <CardTitle>Historique des consultations</CardTitle>
             <CardDescription>
               Vos consultations passées
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="relative overflow-x-auto">
+          <CardContent className="p-6">
+            <div className="relative overflow-x-auto rounded-xl border border-border/50">
               <table className="w-full text-sm text-left">
-                <thead className="text-xs text-muted-foreground uppercase bg-muted/50">
+                <thead className="text-xs text-muted-foreground uppercase bg-muted/80">
                   <tr>
-                    <th scope="col" className="px-6 py-3">Date</th>
+                    <th scope="col" className="px-6 py-3 rounded-tl-lg">Date</th>
                     <th scope="col" className="px-6 py-3">Médecin</th>
                     <th scope="col" className="px-6 py-3">Motif</th>
                     <th scope="col" className="px-6 py-3">Observations</th>
-                    <th scope="col" className="px-6 py-3">Actions</th>
+                    <th scope="col" className="px-6 py-3 rounded-tr-lg">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="bg-white border-b">
+                  <tr className="bg-white border-b hover:bg-secondary/30 transition-colors">
                     <td className="px-6 py-4">10/04/2025</td>
                     <td className="px-6 py-4">Dr. Marie Laurent</td>
                     <td className="px-6 py-4">Consultation de suivi</td>
                     <td className="px-6 py-4">Examen normal, pas de symptômes</td>
                     <td className="px-6 py-4">
-                      <Button variant="ghost" size="sm">Détails</Button>
+                      <Button variant="ghost" size="sm" className="rounded-lg flex items-center gap-1">
+                        <FileText className="h-4 w-4" />
+                        Détails
+                      </Button>
                     </td>
                   </tr>
-                  <tr className="bg-muted/20 border-b">
+                  <tr className="bg-muted/20 border-b hover:bg-secondary/30 transition-colors">
                     <td className="px-6 py-4">15/03/2025</td>
                     <td className="px-6 py-4">Dr. Jean Lefevre</td>
                     <td className="px-6 py-4">Examen cardiaque</td>
                     <td className="px-6 py-4">Prescription d'analyses complémentaires</td>
                     <td className="px-6 py-4">
-                      <Button variant="ghost" size="sm">Détails</Button>
+                      <Button variant="ghost" size="sm" className="rounded-lg flex items-center gap-1">
+                        <FileText className="h-4 w-4" />
+                        Détails
+                      </Button>
                     </td>
                   </tr>
                 </tbody>
