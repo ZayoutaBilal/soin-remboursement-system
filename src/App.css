@@ -193,6 +193,44 @@ button[class*="ghost"]:hover span {
   color: inherit;
 }
 
+/* Table dark mode visibility improvements */
+.dark table {
+  color: hsl(var(--foreground));
+}
+
+.dark table thead {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: white;
+}
+
+.dark table tbody tr {
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.dark table tbody tr:nth-child(odd) {
+  background-color: rgba(30, 30, 40, 0.6);
+}
+
+.dark table tbody tr:nth-child(even) {
+  background-color: rgba(40, 40, 50, 0.6);
+}
+
+.dark table td {
+  color: hsl(var(--foreground));
+}
+
+.dark .bg-white {
+  background-color: rgba(30, 30, 40, 0.6) !important;
+}
+
+.dark .bg-secondary\/10 {
+  background-color: rgba(40, 40, 50, 0.6) !important;
+}
+
+.dark table tbody tr:hover {
+  background-color: rgba(124, 58, 237, 0.15) !important;
+}
+
 /* Responsive design fixes */
 @media (max-width: 768px) {
   .dashboard-panel {
