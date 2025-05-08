@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { UserRole } from "@/types/healthcare";
 import { Home, User, FileText, PlusCircle, LogOut, Users, Pill, Heart, Activity, Search, Microscope, ScrollText } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -20,12 +22,12 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
 
   const getRoleColor = () => {
     switch (role) {
-      case 'patient': return 'bg-healthcare-patient';
-      case 'doctor': return 'bg-healthcare-doctor';
-      case 'pharmacist': return 'bg-healthcare-pharmacist';
-      case 'insurance': return 'bg-healthcare-insurance';
-      case 'laboratory': return 'bg-healthcare-laboratory';
-      default: return 'bg-healthcare-primary';
+      case 'patient': return 'bg-gradient-to-r from-blue-500 to-blue-600';
+      case 'doctor': return 'bg-gradient-to-r from-purple-500 to-purple-600';
+      case 'pharmacist': return 'bg-gradient-to-r from-green-500 to-green-600';
+      case 'insurance': return 'bg-gradient-to-r from-blue-400 to-blue-500';
+      case 'laboratory': return 'bg-gradient-to-r from-amber-500 to-amber-600';
+      default: return 'bg-gradient-to-r from-primary to-accent';
     }
   };
 
@@ -92,50 +94,61 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
       <div 
         className={`${
           sidebarCollapsed ? "w-16" : "w-64"
-        } bg-card border-r transition-all duration-300 flex flex-col`}
+        } sidebar-enhanced transition-all duration-300 flex flex-col`}
       >
         {/* Logo and Collapse Button */}
         <div className={`${getRoleColor()} text-white h-16 flex items-center justify-between px-4`}>
           {!sidebarCollapsed && (
             <div className="flex items-center">
-              {getRoleIcon()}
+              <div className="bg-white/20 rounded-full p-1">
+                {getRoleIcon()}
+              </div>
               <span className="ml-2 font-semibold">{getRoleName()}</span>
             </div>
           )}
-          {sidebarCollapsed && getRoleIcon()}
+          {sidebarCollapsed && 
+            <div className="mx-auto bg-white/20 rounded-full p-1">
+              {getRoleIcon()}
+            </div>
+          }
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            className="text-white hover:bg-white/20"
+            className="text-white hover:bg-white/20 absolute right-0"
           >
             {sidebarCollapsed ? ">" : "<"}
           </Button>
         </div>
 
         {/* Menu Items */}
-        <nav className="flex-1 overflow-y-auto py-4">
-          <ul className="space-y-2 px-2">
-            {getMenuItems().map((item, index) => (
-              <li key={index}>
-                <Button
-                  variant="ghost"
-                  className={`w-full justify-start ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"}`}
-                  onClick={() => navigate(item.path)}
-                >
-                  {item.icon}
-                  {!sidebarCollapsed && <span className="ml-3">{item.name}</span>}
-                </Button>
-              </li>
-            ))}
+        <nav className="flex-1 overflow-y-auto py-4 px-2">
+          <ul className="space-y-2">
+            {getMenuItems().map((item, index) => {
+              const isActive = window.location.pathname === item.path;
+              return (
+                <li key={index}>
+                  <Button
+                    variant="ghost"
+                    className={`w-full justify-start menu-item ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"} ${
+                      isActive ? "active" : ""
+                    } text-white hover:bg-white/10`}
+                    onClick={() => navigate(item.path)}
+                  >
+                    {item.icon}
+                    {!sidebarCollapsed && <span className="ml-3">{item.name}</span>}
+                  </Button>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         {/* Logout Button */}
-        <div className="p-4 border-t">
+        <div className="p-4 border-t border-white/10">
           <Button 
-            variant="outline" 
-            className={`w-full justify-start ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"}`}
+            variant="ghost" 
+            className={`w-full justify-start text-white hover:bg-white/10 ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"}`}
             onClick={handleLogout}
           >
             <LogOut className="w-5 h-5" />
@@ -147,12 +160,27 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white border-b h-16 flex items-center justify-between px-6">
-          <h1 className="text-xl font-semibold">
-            {getRoleName()} - Tableau de Bord
-          </h1>
+        <header className="bg-white shadow-sm border-b h-16 flex items-center justify-between px-6">
+          <div className="flex items-center">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="mr-2 md:hidden"
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            >
+              {sidebarCollapsed ? "☰" : "✕"}
+            </Button>
+            <h1 className="text-xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              {getRoleName()} - Tableau de Bord
+            </h1>
+          </div>
+          
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <div className="hidden md:flex items-center pr-4 border-r">
+              <span className="text-sm text-muted-foreground mr-2">Mode sombre</span>
+              <Checkbox id="dark-mode" />
+            </div>
+            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary/10">
               <PlusCircle className="w-4 h-4 mr-2" />
               Nouvelle Action
             </Button>
@@ -160,7 +188,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-6 bg-muted/30">
+        <main className="flex-1 overflow-y-auto p-6 bg-secondary/30">
           {children}
         </main>
       </div>

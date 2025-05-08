@@ -66,3 +66,76 @@
     background-position: 0% 50%;
   }
 }
+
+/* Dashboard styling enhancement */
+.dashboard-card {
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(124, 58, 237, 0.1);
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+}
+
+.appointment-card {
+  border-left: 4px solid #8b5cf6;
+  background-color: white;
+}
+
+.appointment-card.current {
+  border-left: 4px solid #10b981;
+}
+
+.appointment-card.upcoming {
+  border-left: 4px solid #f59e0b;
+}
+
+.dashboard-header {
+  background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.sidebar-enhanced {
+  background: linear-gradient(180deg, #7c3aed, #6d28d9);
+  border-right: none;
+}
+
+.sidebar-enhanced .menu-item {
+  border-radius: 8px;
+  margin: 0.3rem 0.5rem;
+  transition: all 0.2s;
+}
+
+.sidebar-enhanced .menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-enhanced .active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
