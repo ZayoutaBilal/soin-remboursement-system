@@ -3,6 +3,7 @@ import { useState, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { UserRole } from "@/types/healthcare";
+import { MenuItem } from "@/types/layout";
 import { 
   Home, User, FileText, PlusCircle, LogOut, Users, 
   Pill, Heart, Activity, Search, Microscope, ScrollText,
@@ -92,37 +93,37 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
   };
 
   // Different menu items based on role
-  const getMenuItems = () => {
+  const getMenuItems = (): MenuItem[] => {
     const commonItems = [
-      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}` },
+      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}`, highlight: false },
       { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/profile/${role}`, highlight: true }
     ];
 
-    const roleSpecificItems = {
+    const roleSpecificItems: Record<UserRole, MenuItem[]> = {
       patient: [
-        { name: "Mes Consultations", icon: <Activity className="w-5 h-5" />, path: `/patient/consultations` },
-        { name: "Mes Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/patient/prescriptions` }
+        { name: "Mes Consultations", icon: <Activity className="w-5 h-5" />, path: `/patient/consultations`, highlight: false },
+        { name: "Mes Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/patient/prescriptions`, highlight: false }
       ],
       doctor: [
-        { name: "Mes Patients", icon: <Users className="w-5 h-5" />, path: `/doctor/patients` },
-        { name: "Consultations", icon: <Activity className="w-5 h-5" />, path: `/doctor/consultations` },
-        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions` },
-        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/doctor/reimbursements` }
+        { name: "Mes Patients", icon: <Users className="w-5 h-5" />, path: `/doctor/patients`, highlight: false },
+        { name: "Consultations", icon: <Activity className="w-5 h-5" />, path: `/doctor/consultations`, highlight: false },
+        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/doctor/reimbursements`, highlight: false }
       ],
       pharmacist: [
-        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/pharmacist/prescriptions` },
-        { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications` },
-        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/pharmacist/reimbursements` }
+        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/pharmacist/prescriptions`, highlight: false },
+        { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/pharmacist/reimbursements`, highlight: false }
       ],
       insurance: [
-        { name: "Demandes", icon: <FileText className="w-5 h-5" />, path: `/insurance/claims` },
-        { name: "Assurés", icon: <Users className="w-5 h-5" />, path: `/insurance/insured` },
-        { name: "Paiements", icon: <FileText className="w-5 h-5" />, path: `/insurance/payments` }
+        { name: "Demandes", icon: <FileText className="w-5 h-5" />, path: `/insurance/claims`, highlight: false },
+        { name: "Assurés", icon: <Users className="w-5 h-5" />, path: `/insurance/insured`, highlight: false },
+        { name: "Paiements", icon: <FileText className="w-5 h-5" />, path: `/insurance/payments`, highlight: false }
       ],
       laboratory: [
-        { name: "Analyses", icon: <Search className="w-5 h-5" />, path: `/laboratory/analyses` },
-        { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results` },
-        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/laboratory/reimbursements` }
+        { name: "Analyses", icon: <Search className="w-5 h-5" />, path: `/laboratory/analyses`, highlight: false },
+        { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/laboratory/reimbursements`, highlight: false }
       ]
     };
 
