@@ -17,16 +17,17 @@ import LaboratoryDashboard from "./pages/dashboard/LaboratoryDashboard";
 // Patient routes
 import PatientConsultations from "./pages/patient/Consultations";
 import PatientPrescriptions from "./pages/patient/Prescriptions";
-import PatientReimbursements from "./pages/patient/Reimbursements";
 
 // Doctor routes
 import DoctorPatients from "./pages/doctor/Patients";
 import DoctorConsultations from "./pages/doctor/Consultations";
 import DoctorPrescriptions from "./pages/doctor/Prescriptions";
+import DoctorReimbursements from "./pages/doctor/Reimbursements";
 
 // Pharmacist routes
 import PharmacistPrescriptions from "./pages/pharmacist/Prescriptions";
 import PharmacistMedications from "./pages/pharmacist/Medications";
+import PharmacistReimbursements from "./pages/pharmacist/Reimbursements";
 
 // Insurance routes
 import InsuranceClaims from "./pages/insurance/Claims";
@@ -36,6 +37,7 @@ import InsurancePayments from "./pages/insurance/Payments";
 // Laboratory routes
 import LaboratoryAnalyses from "./pages/laboratory/Analyses";
 import LaboratoryResults from "./pages/laboratory/Results";
+import LaboratoryReimbursements from "./pages/laboratory/Reimbursements";
 
 const queryClient = new QueryClient();
 
@@ -58,16 +60,17 @@ const App = () => (
           {/* Patient Routes */}
           <Route path="/patient/consultations" element={<PatientConsultations />} />
           <Route path="/patient/prescriptions" element={<PatientPrescriptions />} />
-          <Route path="/patient/reimbursements" element={<PatientReimbursements />} />
           
           {/* Doctor Routes */}
           <Route path="/doctor/patients" element={<DoctorPatients />} />
           <Route path="/doctor/consultations" element={<DoctorConsultations />} />
           <Route path="/doctor/prescriptions" element={<DoctorPrescriptions />} />
+          <Route path="/doctor/reimbursements" element={<DoctorReimbursements />} />
           
           {/* Pharmacist Routes */}
           <Route path="/pharmacist/prescriptions" element={<PharmacistPrescriptions />} />
           <Route path="/pharmacist/medications" element={<PharmacistMedications />} />
+          <Route path="/pharmacist/reimbursements" element={<PharmacistReimbursements />} />
           
           {/* Insurance Routes */}
           <Route path="/insurance/claims" element={<InsuranceClaims />} />
@@ -77,6 +80,7 @@ const App = () => (
           {/* Laboratory Routes */}
           <Route path="/laboratory/analyses" element={<LaboratoryAnalyses />} />
           <Route path="/laboratory/results" element={<LaboratoryResults />} />
+          <Route path="/laboratory/reimbursements" element={<LaboratoryReimbursements />} />
           
           {/* Catch-all route for 404s */}
           <Route path="*" element={<NotFound />} />

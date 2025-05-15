@@ -81,6 +81,7 @@ export interface ReimbursementRequest {
   id: string;
   patientId: string;
   requesterId: string;
+  // Changed from 'doctor' | 'pharmacist' | 'laboratory' to exclude patient since patients don't make reimbursement requests
   requesterType: 'doctor' | 'pharmacist' | 'laboratory';
   date: Date;
   amount: number;

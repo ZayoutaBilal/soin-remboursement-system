@@ -61,13 +61,13 @@ const PatientDashboard = () => {
           
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Remboursements</CardTitle>
+              <CardTitle className="text-sm font-medium">Médicaments</CardTitle>
               <FileText className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">7</div>
               <p className="text-xs text-muted-foreground">
-                2 demandes en cours
+                3 en cours de traitement
               </p>
             </CardContent>
           </Card>
@@ -144,54 +144,6 @@ const PatientDashboard = () => {
             </CardContent>
           </Card>
         </div>
-        
-        {/* Reimbursement claims */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Demandes de Remboursement Récentes</CardTitle>
-            <CardDescription>
-              Suivi de vos remboursements
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="relative overflow-x-auto">
-              <table className="w-full text-sm text-left">
-                <thead className="text-xs text-muted-foreground uppercase bg-muted/50">
-                  <tr>
-                    <th scope="col" className="px-6 py-3">Date</th>
-                    <th scope="col" className="px-6 py-3">Type</th>
-                    <th scope="col" className="px-6 py-3">Montant</th>
-                    <th scope="col" className="px-6 py-3">Statut</th>
-                    <th scope="col" className="px-6 py-3">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="bg-white border-b">
-                    <td className="px-6 py-4">10/05/2025</td>
-                    <td className="px-6 py-4">Consultation</td>
-                    <td className="px-6 py-4">25,00 €</td>
-                    <td className="px-6 py-4"><Badge>Approuvé</Badge></td>
-                    <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
-                  </tr>
-                  <tr className="bg-muted/20 border-b">
-                    <td className="px-6 py-4">03/05/2025</td>
-                    <td className="px-6 py-4">Médicaments</td>
-                    <td className="px-6 py-4">43,50 €</td>
-                    <td className="px-6 py-4"><Badge variant="secondary">En cours</Badge></td>
-                    <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
-                  </tr>
-                  <tr className="bg-white border-b">
-                    <td className="px-6 py-4">22/04/2025</td>
-                    <td className="px-6 py-4">Analyses</td>
-                    <td className="px-6 py-4">72,00 €</td>
-                    <td className="px-6 py-4"><Badge variant="outline">Payé</Badge></td>
-                    <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </DashboardLayout>
   );

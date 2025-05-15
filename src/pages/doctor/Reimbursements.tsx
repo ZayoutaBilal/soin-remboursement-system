@@ -2,68 +2,68 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { FileText, Calendar } from "lucide-react";
+import { BadgeDollarSign, Calendar, FileText } from "lucide-react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
-const PatientReimbursements = () => {
+const DoctorReimbursements = () => {
   return (
-    <DashboardLayout role="patient">
+    <DashboardLayout role="doctor">
       <div className="space-y-6">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Mes Remboursements</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Demandes de Remboursement</h2>
           <p className="text-muted-foreground">
-            Suivi des demandes de remboursement auprès de votre assurance
+            Gérez les demandes de remboursement pour vos patients
           </p>
         </div>
 
-        {/* Summary card */}
+        {/* Summary cards */}
         <div className="grid gap-4 md:grid-cols-3">
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total remboursé</CardTitle>
-              <FileText className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">Total demandé</CardTitle>
+              <BadgeDollarSign className="h-4 w-4 text-purple-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">432,50 €</div>
+              <div className="text-2xl font-bold">1,250.00 €</div>
               <p className="text-xs text-muted-foreground">
-                Cette année
+                Ce mois-ci
               </p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">En attente</CardTitle>
-              <Calendar className="h-4 w-4 text-muted-foreground" />
+              <Calendar className="h-4 w-4 text-amber-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">43,50 €</div>
+              <div className="text-2xl font-bold">450.00 €</div>
               <p className="text-xs text-muted-foreground">
-                2 demandes en cours
+                3 demandes en cours
               </p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Taux moyen</CardTitle>
-              <FileText className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">Taux d'acceptation</CardTitle>
+              <FileText className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">75%</div>
+              <div className="text-2xl font-bold">92%</div>
               <p className="text-xs text-muted-foreground">
-                De prise en charge
+                Des demandes approuvées
               </p>
             </CardContent>
           </Card>
         </div>
 
         {/* Reimbursements table */}
-        <Card>
+        <Card className="shadow-md">
           <CardHeader>
-            <CardTitle>Historique des remboursements</CardTitle>
+            <CardTitle>Historique des demandes</CardTitle>
             <CardDescription>
-              Toutes vos demandes de remboursement
+              Suivez l'état de vos demandes de remboursement
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -72,51 +72,35 @@ const PatientReimbursements = () => {
                 <thead className="text-xs text-muted-foreground uppercase bg-muted/50">
                   <tr>
                     <th scope="col" className="px-6 py-3">Date</th>
+                    <th scope="col" className="px-6 py-3">Patient</th>
                     <th scope="col" className="px-6 py-3">Type</th>
                     <th scope="col" className="px-6 py-3">Montant</th>
-                    <th scope="col" className="px-6 py-3">Remboursé</th>
                     <th scope="col" className="px-6 py-3">Statut</th>
                     <th scope="col" className="px-6 py-3">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="bg-white border-b">
+                  <tr className="bg-white border-b dark:bg-muted/20 dark:border-gray-700/30">
                     <td className="px-6 py-4">10/05/2025</td>
+                    <td className="px-6 py-4">Jean Dupont</td>
                     <td className="px-6 py-4">Consultation</td>
-                    <td className="px-6 py-4">25,00 €</td>
-                    <td className="px-6 py-4">18,75 €</td>
+                    <td className="px-6 py-4">75,00 €</td>
                     <td className="px-6 py-4"><Badge>Approuvé</Badge></td>
                     <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
                   </tr>
-                  <tr className="bg-muted/20 border-b">
+                  <tr className="bg-muted/20 border-b dark:bg-gray-800/40 dark:border-gray-700/30">
                     <td className="px-6 py-4">03/05/2025</td>
-                    <td className="px-6 py-4">Médicaments</td>
-                    <td className="px-6 py-4">43,50 €</td>
-                    <td className="px-6 py-4">-</td>
+                    <td className="px-6 py-4">Sophie Martin</td>
+                    <td className="px-6 py-4">Acte médical</td>
+                    <td className="px-6 py-4">120,50 €</td>
                     <td className="px-6 py-4"><Badge variant="secondary">En cours</Badge></td>
                     <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
                   </tr>
-                  <tr className="bg-white border-b">
+                  <tr className="bg-white border-b dark:bg-muted/20 dark:border-gray-700/30">
                     <td className="px-6 py-4">22/04/2025</td>
-                    <td className="px-6 py-4">Analyses</td>
-                    <td className="px-6 py-4">72,00 €</td>
-                    <td className="px-6 py-4">54,00 €</td>
-                    <td className="px-6 py-4"><Badge variant="outline">Payé</Badge></td>
-                    <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
-                  </tr>
-                  <tr className="bg-muted/20 border-b">
-                    <td className="px-6 py-4">15/04/2025</td>
-                    <td className="px-6 py-4">Radiologie</td>
-                    <td className="px-6 py-4">120,00 €</td>
-                    <td className="px-6 py-4">-</td>
-                    <td className="px-6 py-4"><Badge variant="secondary">En cours</Badge></td>
-                    <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
-                  </tr>
-                  <tr className="bg-white border-b">
-                    <td className="px-6 py-4">05/04/2025</td>
+                    <td className="px-6 py-4">Lucas Bernard</td>
                     <td className="px-6 py-4">Consultation spécialiste</td>
-                    <td className="px-6 py-4">50,00 €</td>
-                    <td className="px-6 py-4">35,00 €</td>
+                    <td className="px-6 py-4">95,00 €</td>
                     <td className="px-6 py-4"><Badge variant="outline">Payé</Badge></td>
                     <td className="px-6 py-4"><Button variant="ghost" size="sm">Détails</Button></td>
                   </tr>
@@ -127,22 +111,22 @@ const PatientReimbursements = () => {
         </Card>
 
         {/* New reimbursement request */}
-        <Card>
+        <Card className="shadow-md">
           <CardHeader>
             <CardTitle>Nouvelle demande de remboursement</CardTitle>
             <CardDescription>
-              Soumettez une nouvelle demande de remboursement
+              Créez une demande de remboursement pour un patient
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col space-y-4 items-center sm:flex-row sm:space-y-0 sm:space-x-4">
               <Button className="w-full sm:w-auto">
-                <FileText className="mr-2 h-4 w-4" />
-                Formulaire en ligne
+                <BadgeDollarSign className="mr-2 h-4 w-4" />
+                Créer une demande
               </Button>
               <Button variant="outline" className="w-full sm:w-auto">
-                <Calendar className="mr-2 h-4 w-4" />
-                Scanner facture
+                <FileText className="mr-2 h-4 w-4" />
+                Consulter un modèle
               </Button>
             </div>
           </CardContent>
@@ -152,4 +136,4 @@ const PatientReimbursements = () => {
   );
 };
 
-export default PatientReimbursements;
+export default DoctorReimbursements;

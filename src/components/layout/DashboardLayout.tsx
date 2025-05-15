@@ -99,17 +99,18 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
     const roleSpecificItems = {
       patient: [
         { name: "Mes Consultations", icon: <Activity className="w-5 h-5" />, path: `/patient/consultations` },
-        { name: "Mes Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/patient/prescriptions` },
-        { name: "Mes Remboursements", icon: <FileText className="w-5 h-5" />, path: `/patient/reimbursements` }
+        { name: "Mes Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/patient/prescriptions` }
       ],
       doctor: [
         { name: "Mes Patients", icon: <Users className="w-5 h-5" />, path: `/doctor/patients` },
         { name: "Consultations", icon: <Activity className="w-5 h-5" />, path: `/doctor/consultations` },
-        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions` }
+        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions` },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/doctor/reimbursements` }
       ],
       pharmacist: [
         { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/pharmacist/prescriptions` },
-        { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications` }
+        { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications` },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/pharmacist/reimbursements` }
       ],
       insurance: [
         { name: "Demandes", icon: <FileText className="w-5 h-5" />, path: `/insurance/claims` },
@@ -118,7 +119,8 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
       ],
       laboratory: [
         { name: "Analyses", icon: <Search className="w-5 h-5" />, path: `/laboratory/analyses` },
-        { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results` }
+        { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results` },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/laboratory/reimbursements` }
       ]
     };
 
