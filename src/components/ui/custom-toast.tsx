@@ -1,5 +1,5 @@
 
-import { AlertCircle, CheckCircle, InfoIcon, X, XCircle } from "lucide-react";
+import { AlertCircle, CheckCircle, InfoIcon, XCircle } from "lucide-react";
 import { toast as sonnerToast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 
@@ -42,8 +42,9 @@ export function useCustomToast() {
       description,
       duration,
       icon: toastIcons[type],
-      className: `animate-fade-in toast-${type} toast-hover-grow`,
-      closeButton: true
+      className: `animate-fade-in toast-${type} toast-hover-grow cursor-pointer`,
+      closeButton: false, // Remove the close button
+      onDismiss: () => {}, // This enables the click-to-dismiss behavior
     });
   };
   
