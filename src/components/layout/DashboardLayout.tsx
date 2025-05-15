@@ -1,4 +1,3 @@
-
 import { useState, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -19,10 +18,11 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     // Check for stored preference or system preference
@@ -130,8 +130,16 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
     return [...commonItems, ...roleSpecificItems[role]];
   };
 
-  const toggleSidebar = () => {
-    setSidebarCollapsed(!sidebarCollapsed);
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setSidebarCollapsed(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (!isMobile) {
+      setSidebarCollapsed(true);
+    }
   };
 
   return (
@@ -141,9 +149,11 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
         className={`${
           sidebarCollapsed ? "w-16" : "w-64"
         } relative bg-sidebar text-sidebar-foreground transition-all duration-300 flex flex-col shadow-xl z-20`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {/* Logo and Collapse Button */}
-        <div className={`${getRoleColor()} text-white h-16 flex items-center justify-between px-4`}>
+        {/* Logo and Header */}
+        <div className={`${getRoleColor()} text-white h-16 flex items-center justify-center px-4`}>
           {!sidebarCollapsed && (
             <div className="flex items-center">
               <div className="bg-white/20 rounded-full p-1 shadow-md">
@@ -157,14 +167,6 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               {getRoleIcon()}
             </div>
           }
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={toggleSidebar}
-            className="text-white hover:bg-white/20 absolute right-0"
-          >
-            {sidebarCollapsed ? ">" : "<"}
-          </Button>
         </div>
 
         {/* Menu Items */}
@@ -212,7 +214,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               variant="ghost" 
               size="sm"
               className="mr-2 md:hidden"
-              onClick={toggleSidebar}
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             >
               {sidebarCollapsed ? "☰" : "✕"}
             </Button>
