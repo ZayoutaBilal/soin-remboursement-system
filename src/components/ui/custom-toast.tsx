@@ -1,5 +1,5 @@
 
-import { AlertCircle, CheckCircle, InfoIcon, XCircle } from "lucide-react";
+import { AlertCircle, CheckCircle, InfoIcon, X, XCircle } from "lucide-react";
 import { toast as sonnerToast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 
@@ -37,25 +37,14 @@ export function useCustomToast() {
   const { toast } = useToast();
   
   const showToast = (type: ToastType, { title, description, duration = 5000, useClassic = false }: ToastOptions) => {
-    // Only show one type of toast based on the useClassic flag
-    if (useClassic) {
-      // For shadcn toast (classic style)
-      toast({
-        title: title,
-        description: description,
-        duration: duration,
-        variant: toastVariants[type],
-        className: `animate-fade-in ${toastClasses[type]}`
-      });
-    } else {
-      // For sonner toast (more modern looking) - default
-      sonnerToast[type](title || (type.charAt(0).toUpperCase() + type.slice(1)), {
-        description,
-        duration,
-        icon: toastIcons[type],
-        className: `animate-fade-in toast-${type}`
-      });
-    }
+    // Only use sonner toast (more modern looking with hover effects)
+    sonnerToast[type](title || (type.charAt(0).toUpperCase() + type.slice(1)), {
+      description,
+      duration,
+      icon: toastIcons[type],
+      className: `animate-fade-in toast-${type} toast-hover-grow`,
+      closeButton: true
+    });
   };
   
   return {
