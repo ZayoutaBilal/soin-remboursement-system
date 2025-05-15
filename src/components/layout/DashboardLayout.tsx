@@ -1,3 +1,4 @@
+
 import { useState, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -59,9 +60,9 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
 
   const getRoleColor = () => {
     switch (role) {
-      case 'patient': return 'bg-gradient-to-r from-blue-500 to-blue-600';
+      case 'patient': return 'bg-gradient-to-r from-pink-500 to-pink-600';
       case 'doctor': return 'bg-gradient-to-r from-purple-500 to-purple-600';
-      case 'pharmacist': return 'bg-gradient-to-r from-green-500 to-green-600';
+      case 'pharmacist': return 'bg-gradient-to-r from-emerald-500 to-emerald-600';
       case 'insurance': return 'bg-gradient-to-r from-blue-400 to-blue-500';
       case 'laboratory': return 'bg-gradient-to-r from-amber-500 to-amber-600';
       default: return 'bg-gradient-to-r from-primary to-accent';
@@ -94,7 +95,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
   const getMenuItems = () => {
     const commonItems = [
       { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}` },
-      { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/profile/${role}` }
+      { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/profile/${role}`, highlight: true }
     ];
 
     const roleSpecificItems = {
@@ -173,10 +174,10 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               return (
                 <li key={index}>
                   <Button
-                    variant="ghost"
+                    variant={item.highlight ? role : "ghost"}
                     className={`w-full justify-start menu-item ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"} ${
                       isActive ? "active bg-sidebar-accent text-sidebar-accent-foreground" : ""
-                    } text-sidebar-foreground hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground transition-all shadow-sm`}
+                    } text-sidebar-foreground hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground transition-all shadow-sm animate-fade-in`}
                     onClick={() => navigate(item.path)}
                   >
                     {item.icon}
@@ -231,19 +232,19 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
             </Button>
             
             <Button
-              variant="outline"
+              variant={role}
               size="sm"
-              className="hidden md:flex border-primary text-primary hover:bg-primary/10"
+              className="hidden md:flex items-center gap-2 animate-fade-in"
               onClick={() => navigate(`/profile/${role}`)}
             >
-              <User className="w-4 h-4 mr-2" />
+              <User className="w-4 h-4" />
               Mon Profil
             </Button>
           </div>
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-secondary/30">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-secondary/30 animate-fade-in">
           {children}
         </main>
       </div>

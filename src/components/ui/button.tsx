@@ -22,6 +22,12 @@ const buttonVariants = cva(
         success: "bg-emerald-600 text-white hover:bg-emerald-700",
         warning: "bg-amber-500 text-white hover:bg-amber-600",
         info: "bg-sky-500 text-white hover:bg-sky-600",
+        // Role-specific button variants
+        patient: "bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700",
+        doctor: "bg-gradient-to-r from-purple-500 to-purple-600 text-white hover:from-purple-600 hover:to-purple-700",
+        pharmacist: "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700",
+        laboratory: "bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700",
+        insurance: "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700",
       },
       size: {
         default: "h-10 px-4 py-2",

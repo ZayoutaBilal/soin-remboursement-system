@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UserRole } from "@/types/healthcare";
 import { Edit, Camera, Shield, User } from "lucide-react";
+import { useCustomToast } from "@/components/ui/custom-toast";
 
 interface ProfileCardProps {
   role: UserRole;
@@ -30,21 +30,39 @@ export const ProfileCard = ({
   memberSince = "Mai 2025",
 }: ProfileCardProps) => {
   const [isEditing, setIsEditing] = React.useState(false);
+  const toast = useCustomToast();
   
   const getRoleIcon = () => {
     switch (role) {
       case "patient":
-        return <User className="h-5 w-5 text-blue-500" />;
+        return <User className="h-5 w-5 text-pink-500" />;
       case "doctor":
         return <Shield className="h-5 w-5 text-purple-500" />;
       case "pharmacist":
-        return <Shield className="h-5 w-5 text-green-500" />;
+        return <Shield className="h-5 w-5 text-emerald-500" />;
       case "laboratory":
         return <Shield className="h-5 w-5 text-amber-500" />;
       case "insurance":
-        return <Shield className="h-5 w-5 text-blue-400" />;
+        return <Shield className="h-5 w-5 text-blue-500" />;
       default:
         return <User className="h-5 w-5" />;
+    }
+  };
+
+  const getRoleColor = () => {
+    switch (role) {
+      case "patient":
+        return "from-pink-500 to-pink-600";
+      case "doctor":
+        return "from-purple-500 to-purple-600";
+      case "pharmacist":
+        return "from-emerald-500 to-emerald-600";
+      case "laboratory":
+        return "from-amber-500 to-amber-600";
+      case "insurance":
+        return "from-blue-500 to-blue-600";
+      default:
+        return "from-primary to-accent";
     }
   };
 
@@ -73,15 +91,25 @@ export const ProfileCard = ({
       .toUpperCase();
   };
 
+  const handleSave = () => {
+    setIsEditing(false);
+    toast.success({
+      title: "Profil mis à jour",
+      description: "Vos informations ont été enregistrées avec succès."
+    });
+  };
+
   return (
-    <Card className="w-full max-w-3xl mx-auto profile-card animate-fade-in hover-scale">
+    <Card className="w-full max-w-3xl mx-auto profile-card animate-fade-in">
       <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
-          <CardTitle className="text-2xl font-bold">Mon Profil</CardTitle>
+          <CardTitle className={`text-2xl font-bold bg-gradient-to-r ${getRoleColor()} bg-clip-text text-transparent`}>
+            Mon Profil
+          </CardTitle>
           <Button
-            variant="outline"
+            variant={role}
             size="sm"
-            className="flex items-center gap-1 transition-all hover:bg-primary/20 hover:text-primary"
+            className="flex items-center gap-1 transition-all"
             onClick={() => setIsEditing(!isEditing)}
           >
             <Edit className="h-4 w-4" />
@@ -93,11 +121,11 @@ export const ProfileCard = ({
         <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
           <div className="flex flex-col items-center gap-2">
             <div className="relative">
-              <Avatar className="h-24 w-24 border-4 border-primary/10">
+              <Avatar className={`h-24 w-24 border-4 border-${role === "patient" ? "pink" : role === "doctor" ? "purple" : role === "pharmacist" ? "emerald" : role === "laboratory" ? "amber" : "blue"}-500/30`}>
                 {avatar ? (
                   <AvatarImage src={avatar} alt={name} />
                 ) : (
-                  <AvatarFallback className="bg-primary/5 text-primary text-xl">
+                  <AvatarFallback className={`bg-gradient-to-br ${getRoleColor()} text-white text-xl`}>
                     {getInitials(name)}
                   </AvatarFallback>
                 )}
@@ -168,7 +196,7 @@ export const ProfileCard = ({
             {isEditing && (
               <div className="flex justify-end gap-2 pt-2">
                 <Button variant="outline" onClick={() => setIsEditing(false)}>Annuler</Button>
-                <Button className="animate-pulse">Enregistrer</Button>
+                <Button variant={role} onClick={handleSave} className="animate-pulse">Enregistrer</Button>
               </div>
             )}
           </div>
@@ -284,10 +312,10 @@ export const ProfileCard = ({
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <Button variant="outline" className="w-full justify-start hover:bg-destructive/10 hover:text-destructive">
+              <Button variant={role} className="w-full justify-start">
                 Changer mon mot de passe
               </Button>
-              <Button variant="outline" className="w-full justify-start hover:bg-destructive/10 hover:text-destructive">
+              <Button variant={role} className="w-full justify-start">
                 Notifications et préférences
               </Button>
             </div>
