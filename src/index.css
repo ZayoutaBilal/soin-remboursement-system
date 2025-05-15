@@ -238,6 +238,11 @@
     @apply transform scale-105 shadow-lg z-50;
   }
   
+  /* Click indicator for toasts */
+  .cursor-pointer {
+    @apply cursor-pointer;
+  }
+  
   /* Table dark mode improvements */
   .dark .table-row {
     @apply border-gray-700/30;

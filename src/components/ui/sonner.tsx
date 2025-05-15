@@ -12,6 +12,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       closeButton={false}
+      dismissible={true} // Explicitly set dismissible to true
       toastOptions={{
         classNames: {
           toast:
