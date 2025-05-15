@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -264,6 +263,23 @@
   /* Date visibility fix for dark mode */
   .dark .date-cell {
     @apply text-gray-100 font-medium;
+  }
+  
+  /* Enhanced toast size and visibility */
+  .larger-toast {
+    @apply text-base px-6 py-4 min-w-[320px] max-w-[400px];
+  }
+  
+  .toast-title {
+    @apply text-lg font-medium mb-1;
+  }
+  
+  .toast-description {
+    @apply text-base leading-relaxed;
+  }
+  
+  .toast-icon {
+    @apply w-6 h-6;
   }
 }
 

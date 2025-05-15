@@ -1,6 +1,6 @@
 
 import { useTheme } from "next-themes"
-import { Toaster as Sonner, toast } from "sonner"
+import { Toaster as Sonner } from "sonner"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
@@ -12,22 +12,25 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       closeButton={false}
-      // The sonner library accepts the dismissible prop but it's not included in the ToasterProps type
-      // We'll omit it from the spread props and pass it directly
+      // @ts-ignore - The type definitions are incomplete but the prop is supported
+      dismissible={true}
+      position="top-right"
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:toast-hover-grow group-[.toaster]:cursor-pointer",
-          description: "group-[.toast]:text-muted-foreground",
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:toast-hover-grow group-[.toaster]:cursor-pointer group-[.toaster]:larger-toast",
+          title: "group-[.toast]:text-foreground group-[.toast]:toast-title",
+          description: "group-[.toast]:text-muted-foreground group-[.toast]:toast-description",
           actionButton:
             "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton:
             "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
         },
+        duration: 6000, // Increase duration to give users more time to read
       }}
       {...props}
     />
   )
 }
 
-export { Toaster, toast }
+export { Toaster, Sonner as toast }

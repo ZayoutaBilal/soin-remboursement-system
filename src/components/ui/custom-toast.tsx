@@ -13,10 +13,10 @@ interface ToastOptions {
 }
 
 const toastIcons = {
-  success: <CheckCircle className="h-5 w-5 text-emerald-500" />,
-  error: <XCircle className="h-5 w-5 text-red-500" />,
-  warning: <AlertCircle className="h-5 w-5 text-amber-500" />,
-  info: <InfoIcon className="h-5 w-5 text-sky-500" />
+  success: <CheckCircle className="h-6 w-6 text-emerald-500 toast-icon" />,
+  error: <XCircle className="h-6 w-6 text-red-500 toast-icon" />,
+  warning: <AlertCircle className="h-6 w-6 text-amber-500 toast-icon" />,
+  info: <InfoIcon className="h-6 w-6 text-sky-500 toast-icon" />
 };
 
 const toastClasses = {
@@ -36,14 +36,14 @@ const toastVariants: Record<ToastType, "default" | "destructive" | "success" | "
 export function useCustomToast() {
   const { toast } = useToast();
   
-  const showToast = (type: ToastType, { title, description, duration = 5000, useClassic = false }: ToastOptions) => {
+  const showToast = (type: ToastType, { title, description, duration = 6000, useClassic = false }: ToastOptions) => {
     // Only use sonner toast (more modern looking with hover effects)
     sonnerToast[type](title || (type.charAt(0).toUpperCase() + type.slice(1)), {
       description,
       duration,
       icon: toastIcons[type],
-      className: `animate-fade-in toast-${type} toast-hover-grow cursor-pointer`,
-      closeButton: false, // Remove the close button
+      className: `animate-fade-in toast-${type} toast-hover-grow cursor-pointer larger-toast`,
+      closeButton: false,
       onDismiss: () => {}, // This enables the click-to-dismiss behavior
     });
   };
