@@ -95,7 +95,8 @@ export const ProfileCard = ({
     setIsEditing(false);
     toast.success({
       title: "Profil mis à jour",
-      description: "Vos informations ont été enregistrées avec succès."
+      description: "Vos informations ont été enregistrées avec succès.",
+      // Use the modern Sonner toast by default (not passing useClassic)
     });
   };
 

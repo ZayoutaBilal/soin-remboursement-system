@@ -9,6 +9,7 @@ interface ToastOptions {
   title?: string;
   description: string;
   duration?: number;
+  useClassic?: boolean;
 }
 
 const toastIcons = {
@@ -35,23 +36,26 @@ const toastVariants: Record<ToastType, "default" | "destructive" | "success" | "
 export function useCustomToast() {
   const { toast } = useToast();
   
-  const showToast = (type: ToastType, { title, description, duration = 5000 }: ToastOptions) => {
-    // For shadcn toast
-    toast({
-      title: title,
-      description: description,
-      duration: duration,
-      variant: toastVariants[type],
-      className: `animate-fade-in ${toastClasses[type]}`
-    });
-    
-    // For sonner toast (more modern looking)
-    sonnerToast[type](title || (type.charAt(0).toUpperCase() + type.slice(1)), {
-      description,
-      duration,
-      icon: toastIcons[type],
-      className: `animate-fade-in toast-${type}`
-    });
+  const showToast = (type: ToastType, { title, description, duration = 5000, useClassic = false }: ToastOptions) => {
+    // Only show one type of toast based on the useClassic flag
+    if (useClassic) {
+      // For shadcn toast (classic style)
+      toast({
+        title: title,
+        description: description,
+        duration: duration,
+        variant: toastVariants[type],
+        className: `animate-fade-in ${toastClasses[type]}`
+      });
+    } else {
+      // For sonner toast (more modern looking) - default
+      sonnerToast[type](title || (type.charAt(0).toUpperCase() + type.slice(1)), {
+        description,
+        duration,
+        icon: toastIcons[type],
+        className: `animate-fade-in toast-${type}`
+      });
+    }
   };
   
   return {
