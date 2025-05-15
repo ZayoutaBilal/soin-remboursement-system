@@ -18,6 +18,20 @@ const toastIcons = {
   info: <InfoIcon className="h-5 w-5 text-sky-500" />
 };
 
+const toastClasses = {
+  success: "bg-emerald-50 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-200",
+  error: "bg-red-50 dark:bg-red-900/30 border-red-300 dark:border-red-600 text-red-800 dark:text-red-200",
+  warning: "bg-amber-50 dark:bg-amber-900/30 border-amber-300 dark:border-amber-600 text-amber-800 dark:text-amber-200",
+  info: "bg-sky-50 dark:bg-sky-900/30 border-sky-300 dark:border-sky-600 text-sky-800 dark:text-sky-200"
+};
+
+const toastVariants: Record<ToastType, "default" | "destructive" | "success" | "warning" | "info"> = {
+  success: "success",
+  error: "destructive",
+  warning: "warning",
+  info: "info"
+};
+
 export function useCustomToast() {
   const { toast } = useToast();
   
@@ -27,14 +41,8 @@ export function useCustomToast() {
       title: title,
       description: description,
       duration: duration,
-      variant: type === "error" ? "destructive" : "default",
-      className: type === "success" 
-        ? "toast-success" 
-        : type === "error" 
-        ? "toast-error" 
-        : type === "warning"
-        ? "toast-warning"
-        : "toast-info"
+      variant: toastVariants[type],
+      className: `animate-fade-in ${toastClasses[type]}`
     });
     
     // For sonner toast (more modern looking)

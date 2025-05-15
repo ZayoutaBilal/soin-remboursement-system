@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import UIShowcase from "./pages/UIShowcase";
 
 // Dashboard routes
 import PatientDashboard from "./pages/dashboard/PatientDashboard";
@@ -56,6 +57,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/ui" element={<UIShowcase />} />
           
           {/* Dashboard Routes */}
           <Route path="/dashboard/patient" element={<PatientDashboard />} />
