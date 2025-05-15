@@ -12,7 +12,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       closeButton={false}
-      dismissible={true} // Explicitly set dismissible to true
+      // The sonner library accepts the dismissible prop but it's not included in the ToasterProps type
+      // We'll omit it from the spread props and pass it directly
       toastOptions={{
         classNames: {
           toast:
