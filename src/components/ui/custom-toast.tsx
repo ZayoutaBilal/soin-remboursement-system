@@ -13,10 +13,10 @@ interface ToastOptions {
 }
 
 const toastIcons = {
-  success: <CheckCircle className="h-6 w-6 text-emerald-500 toast-icon" />,
-  error: <XCircle className="h-6 w-6 text-red-500 toast-icon" />,
-  warning: <AlertCircle className="h-6 w-6 text-amber-500 toast-icon" />,
-  info: <InfoIcon className="h-6 w-6 text-sky-500 toast-icon" />
+  success: <CheckCircle className="h-7 w-7 text-emerald-500 toast-icon" />,
+  error: <XCircle className="h-7 w-7 text-red-500 toast-icon" />,
+  warning: <AlertCircle className="h-7 w-7 text-amber-500 toast-icon" />,
+  info: <InfoIcon className="h-7 w-7 text-sky-500 toast-icon" />
 };
 
 const toastClasses = {
@@ -42,9 +42,10 @@ export function useCustomToast() {
       description,
       duration,
       icon: toastIcons[type],
-      className: `animate-fade-in toast-${type} toast-hover-grow cursor-pointer larger-toast`,
-      closeButton: false,
-      onDismiss: () => {}, // This enables the click-to-dismiss behavior
+      className: `animate-fade-in toast-${type} toast-hover-grow larger-toast`,
+      closeButton: true, // Enable close button to ensure dismissal works
+      dismissible: true, // Explicitly set dismissible to true
+      onDismiss: () => {}, // Keep empty callback to enable dismiss behavior
     });
   };
   
