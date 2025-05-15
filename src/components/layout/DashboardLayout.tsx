@@ -93,7 +93,8 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
   // Different menu items based on role
   const getMenuItems = () => {
     const commonItems = [
-      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}` }
+      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}` },
+      { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/profile/${role}` }
     ];
 
     const roleSpecificItems = {
@@ -229,9 +230,14 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
             
-            <Button variant="outline" size="sm" className="hidden md:flex border-primary text-primary hover:bg-primary/10">
-              <PlusCircle className="w-4 h-4 mr-2" />
-              Nouvelle Action
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden md:flex border-primary text-primary hover:bg-primary/10"
+              onClick={() => navigate(`/profile/${role}`)}
+            >
+              <User className="w-4 h-4 mr-2" />
+              Mon Profil
             </Button>
           </div>
         </header>

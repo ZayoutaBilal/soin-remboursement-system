@@ -14,6 +14,13 @@ import PharmacistDashboard from "./pages/dashboard/PharmacistDashboard";
 import InsuranceDashboard from "./pages/dashboard/InsuranceDashboard";
 import LaboratoryDashboard from "./pages/dashboard/LaboratoryDashboard";
 
+// Profile routes
+import PatientProfile from "./pages/profile/PatientProfile";
+import DoctorProfile from "./pages/profile/DoctorProfile";
+import PharmacistProfile from "./pages/profile/PharmacistProfile";
+import InsuranceProfile from "./pages/profile/InsuranceProfile";
+import LaboratoryProfile from "./pages/profile/LaboratoryProfile";
+
 // Patient routes
 import PatientConsultations from "./pages/patient/Consultations";
 import PatientPrescriptions from "./pages/patient/Prescriptions";
@@ -56,6 +63,13 @@ const App = () => (
           <Route path="/dashboard/pharmacist" element={<PharmacistDashboard />} />
           <Route path="/dashboard/insurance" element={<InsuranceDashboard />} />
           <Route path="/dashboard/laboratory" element={<LaboratoryDashboard />} />
+          
+          {/* Profile Routes */}
+          <Route path="/profile/patient" element={<PatientProfile />} />
+          <Route path="/profile/doctor" element={<DoctorProfile />} />
+          <Route path="/profile/pharmacist" element={<PharmacistProfile />} />
+          <Route path="/profile/insurance" element={<InsuranceProfile />} />
+          <Route path="/profile/laboratory" element={<LaboratoryProfile />} />
           
           {/* Patient Routes */}
           <Route path="/patient/consultations" element={<PatientConsultations />} />
