@@ -80,4 +80,41 @@
   .dark .date-cell {
     @apply text-gray-100 font-medium;
   }
+  
+  /* Report page specific styles */
+  .report-card {
+    @apply transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 card-hover;
+  }
+  
+  .report-stat-card {
+    @apply bg-gradient-to-br from-card/80 to-white dark:from-gray-800 dark:to-gray-900 shadow-md rounded-xl overflow-hidden transition-all hover:scale-[1.02] duration-200;
+  }
+  
+  .report-chart-card {
+    @apply bg-card dark:bg-gray-800/90 shadow-md rounded-xl overflow-hidden border border-border/30 dark:border-gray-700/50 transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .report-grid {
+    @apply grid gap-6 animate-fade-in;
+  }
+  
+  .role-accent-patient {
+    @apply from-pink-500/90 to-pink-600/90 dark:from-pink-600/80 dark:to-pink-700/80;
+  }
+  
+  .role-accent-doctor {
+    @apply from-purple-500/90 to-purple-600/90 dark:from-purple-600/80 dark:to-purple-700/80;
+  }
+  
+  .role-accent-pharmacist {
+    @apply from-emerald-500/90 to-emerald-600/90 dark:from-emerald-600/80 dark:to-emerald-700/80;
+  }
+  
+  .role-accent-insurance {
+    @apply from-blue-400/90 to-blue-500/90 dark:from-blue-500/80 dark:to-blue-600/80;
+  }
+  
+  .role-accent-laboratory {
+    @apply from-amber-500/90 to-amber-600/90 dark:from-amber-600/80 dark:to-amber-700/80;
+  }
 }
