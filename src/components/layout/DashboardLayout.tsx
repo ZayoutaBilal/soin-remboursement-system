@@ -2,6 +2,7 @@ import { useState, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { UserRole } from "@/types/healthcare";
+import { MenuItem } from "@/types/layout";
 import { 
   Home, User, FileText, PlusCircle, LogOut, Users, 
   Pill, Heart, Activity, Search, Microscope, ScrollText,
@@ -17,10 +18,11 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     // Check for stored preference or system preference
@@ -59,9 +61,9 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
 
   const getRoleColor = () => {
     switch (role) {
-      case 'patient': return 'bg-gradient-to-r from-blue-500 to-blue-600';
+      case 'patient': return 'bg-gradient-to-r from-pink-500 to-pink-600';
       case 'doctor': return 'bg-gradient-to-r from-purple-500 to-purple-600';
-      case 'pharmacist': return 'bg-gradient-to-r from-green-500 to-green-600';
+      case 'pharmacist': return 'bg-gradient-to-r from-emerald-500 to-emerald-600';
       case 'insurance': return 'bg-gradient-to-r from-blue-400 to-blue-500';
       case 'laboratory': return 'bg-gradient-to-r from-amber-500 to-amber-600';
       default: return 'bg-gradient-to-r from-primary to-accent';
@@ -91,42 +93,53 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
   };
 
   // Different menu items based on role
-  const getMenuItems = () => {
+  const getMenuItems = (): MenuItem[] => {
     const commonItems = [
-      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}` }
+      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}`, highlight: false },
+      { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/profile/${role}`, highlight: true }
     ];
 
-    const roleSpecificItems = {
+    const roleSpecificItems: Record<UserRole, MenuItem[]> = {
       patient: [
-        { name: "Mes Consultations", icon: <Activity className="w-5 h-5" />, path: `/patient/consultations` },
-        { name: "Mes Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/patient/prescriptions` },
-        { name: "Mes Remboursements", icon: <FileText className="w-5 h-5" />, path: `/patient/reimbursements` }
+        { name: "Mes Consultations", icon: <Activity className="w-5 h-5" />, path: `/patient/consultations`, highlight: false },
+        { name: "Mes Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/patient/prescriptions`, highlight: false }
       ],
       doctor: [
-        { name: "Mes Patients", icon: <Users className="w-5 h-5" />, path: `/doctor/patients` },
-        { name: "Consultations", icon: <Activity className="w-5 h-5" />, path: `/doctor/consultations` },
-        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions` }
+        { name: "Mes Patients", icon: <Users className="w-5 h-5" />, path: `/doctor/patients`, highlight: false },
+        { name: "Consultations", icon: <Activity className="w-5 h-5" />, path: `/doctor/consultations`, highlight: false },
+        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/doctor/reimbursements`, highlight: false }
       ],
       pharmacist: [
-        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/pharmacist/prescriptions` },
-        { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications` }
+        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/pharmacist/prescriptions`, highlight: false },
+        { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/pharmacist/reimbursements`, highlight: false }
       ],
       insurance: [
-        { name: "Demandes", icon: <FileText className="w-5 h-5" />, path: `/insurance/claims` },
-        { name: "Assurés", icon: <Users className="w-5 h-5" />, path: `/insurance/insured` },
-        { name: "Paiements", icon: <FileText className="w-5 h-5" />, path: `/insurance/payments` }
+        { name: "Demandes", icon: <FileText className="w-5 h-5" />, path: `/insurance/claims`, highlight: false },
+        { name: "Assurés", icon: <Users className="w-5 h-5" />, path: `/insurance/insured`, highlight: false },
+        { name: "Paiements", icon: <FileText className="w-5 h-5" />, path: `/insurance/payments`, highlight: false }
       ],
       laboratory: [
-        { name: "Analyses", icon: <Search className="w-5 h-5" />, path: `/laboratory/analyses` },
-        { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results` }
+        { name: "Analyses", icon: <Search className="w-5 h-5" />, path: `/laboratory/analyses`, highlight: false },
+        { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/laboratory/reimbursements`, highlight: false }
       ]
     };
 
     return [...commonItems, ...roleSpecificItems[role]];
   };
 
-  const toggleSidebar = () => {
-    setSidebarCollapsed(!sidebarCollapsed);
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setSidebarCollapsed(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (!isMobile) {
+      setSidebarCollapsed(true);
+    }
   };
 
   return (
@@ -136,9 +149,11 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
         className={`${
           sidebarCollapsed ? "w-16" : "w-64"
         } relative bg-sidebar text-sidebar-foreground transition-all duration-300 flex flex-col shadow-xl z-20`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {/* Logo and Collapse Button */}
-        <div className={`${getRoleColor()} text-white h-16 flex items-center justify-between px-4`}>
+        {/* Logo and Header */}
+        <div className={`${getRoleColor()} text-white h-16 flex items-center justify-center px-4`}>
           {!sidebarCollapsed && (
             <div className="flex items-center">
               <div className="bg-white/20 rounded-full p-1 shadow-md">
@@ -152,14 +167,6 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               {getRoleIcon()}
             </div>
           }
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={toggleSidebar}
-            className="text-white hover:bg-white/20 absolute right-0"
-          >
-            {sidebarCollapsed ? ">" : "<"}
-          </Button>
         </div>
 
         {/* Menu Items */}
@@ -170,10 +177,10 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               return (
                 <li key={index}>
                   <Button
-                    variant="ghost"
+                    variant={item.highlight ? role : "ghost"}
                     className={`w-full justify-start menu-item ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"} ${
                       isActive ? "active bg-sidebar-accent text-sidebar-accent-foreground" : ""
-                    } text-sidebar-foreground hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground transition-all shadow-sm`}
+                    } text-sidebar-foreground hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground transition-all shadow-sm animate-fade-in`}
                     onClick={() => navigate(item.path)}
                   >
                     {item.icon}
@@ -207,7 +214,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               variant="ghost" 
               size="sm"
               className="mr-2 md:hidden"
-              onClick={toggleSidebar}
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             >
               {sidebarCollapsed ? "☰" : "✕"}
             </Button>
@@ -227,15 +234,20 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
             
-            <Button variant="outline" size="sm" className="hidden md:flex border-primary text-primary hover:bg-primary/10">
-              <PlusCircle className="w-4 h-4 mr-2" />
-              Nouvelle Action
+            <Button
+              variant={role}
+              size="sm"
+              className="hidden md:flex items-center gap-2 animate-fade-in"
+              onClick={() => navigate(`/profile/${role}`)}
+            >
+              <User className="w-4 h-4" />
+              Mon Profil
             </Button>
           </div>
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-secondary/30">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-secondary/30 animate-fade-in">
           {children}
         </main>
       </div>

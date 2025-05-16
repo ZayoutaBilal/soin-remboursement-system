@@ -42,6 +42,14 @@
     --sidebar-accent-foreground: 240 5.9% 98%;
     --sidebar-border: 262 83% 28%;
     --sidebar-ring: 262 83% 58%;
+    
+    /* New color variables */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 200 98% 39%;
+    --info-foreground: 0 0% 100%;
   }
 
   .dark {
@@ -81,6 +89,14 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 262 15% 25%;
     --sidebar-ring: 262 83% 58%;
+    
+    /* New dark mode color variables */
+    --success: 142 69% 58%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 95% 58%;
+    --warning-foreground: 0 0% 100%;
+    --info: 200 90% 57%;
+    --info-foreground: 0 0% 100%;
   }
 }
 
@@ -181,5 +197,130 @@
   /* Interactive buttons with hover effects */
   .interactive-button {
     @apply transition-all hover:shadow-md hover:scale-105;
+  }
+  
+  /* New animation classes */
+  .animate-fade-in {
+    @apply animate-[fade-in_0.3s_ease-out];
+  }
+  
+  .animate-slide-in {
+    @apply animate-[slide-in-right_0.3s_ease-out];
+  }
+  
+  .animate-scale-in {
+    @apply animate-[scale-in_0.2s_ease-out];
+  }
+  
+  /* New toast styles */
+  .toast-success {
+    @apply bg-emerald-50 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-200;
+  }
+  
+  .toast-error {
+    @apply bg-red-50 dark:bg-red-900/30 border-red-300 dark:border-red-600 text-red-800 dark:text-red-200;
+  }
+  
+  .toast-warning {
+    @apply bg-amber-50 dark:bg-amber-900/30 border-amber-300 dark:border-amber-600 text-amber-800 dark:text-amber-200;
+  }
+  
+  .toast-info {
+    @apply bg-sky-50 dark:bg-sky-900/30 border-sky-300 dark:border-sky-600 text-sky-800 dark:text-sky-200;
+  }
+  
+  /* Toast hover grow animation */
+  .toast-hover-grow {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .toast-hover-grow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+  
+  /* Click indicator for toasts */
+  .cursor-pointer {
+    cursor: pointer; /* Direct CSS property instead of @apply */
+  }
+  
+  /* Table dark mode improvements */
+  .dark .table-row {
+    @apply border-gray-700/30;
+  }
+  
+  .dark .table-cell {
+    @apply text-white border-gray-700/30;
+  }
+  
+  .dark .table-header {
+    @apply bg-gray-800 text-gray-100;
+  }
+  
+  .dark .table-row-alt {
+    @apply bg-gray-800/50;
+  }
+  
+  /* Date visibility fix for dark mode */
+  .dark .date-cell {
+    @apply text-gray-100 font-medium;
+  }
+  
+  /* Enhanced toast size and visibility */
+  .larger-toast {
+    min-width: 340px !important;
+    max-width: 450px !important;
+    padding: 1rem 1.25rem !important;
+    font-size: 1.05rem !important;
+    border-width: 2px !important;
+  }
+  
+  .toast-title {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .toast-description {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .toast-icon {
+    min-width: 28px !important;
+    min-height: 28px !important;
+    margin-right: 0.75rem !important;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
