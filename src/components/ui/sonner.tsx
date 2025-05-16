@@ -12,7 +12,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       closeButton={true}
-      dismissible={true}
+      // Remove the dismissible prop as it's not supported in the current Sonner version
       position="top-right"
       toastOptions={{
         classNames: {
