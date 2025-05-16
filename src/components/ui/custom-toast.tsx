@@ -1,3 +1,4 @@
+
 import { AlertCircle, CheckCircle, InfoIcon, XCircle } from "lucide-react";
 import { toast as sonnerToast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
@@ -41,8 +42,8 @@ export function useCustomToast() {
       description,
       duration,
       icon: toastIcons[type],
-      className: `animate-fade-in toast-${type} toast-hover-grow larger-toast`,
-      closeButton: true, // Enable close button to ensure dismissal works
+      className: `animate-fade-in toast-${type} toast-hover-grow larger-toast cursor-pointer`,
+      closeButton: false, // Disable close button
       // Removed the dismissible property as it's not supported in the current version
       onDismiss: () => {}, // Keep empty callback to enable dismiss behavior
     });

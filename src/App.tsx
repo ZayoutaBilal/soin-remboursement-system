@@ -47,6 +47,13 @@ import LaboratoryAnalyses from "./pages/laboratory/Analyses";
 import LaboratoryResults from "./pages/laboratory/Results";
 import LaboratoryReimbursements from "./pages/laboratory/Reimbursements";
 
+// Report routes
+import PatientReports from "./pages/reports/PatientReports";
+import DoctorReports from "./pages/reports/DoctorReports";
+import PharmacistReports from "./pages/reports/PharmacistReports";
+import InsuranceReports from "./pages/reports/InsuranceReports";
+import LaboratoryReports from "./pages/reports/LaboratoryReports";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -97,6 +104,13 @@ const App = () => (
           <Route path="/laboratory/analyses" element={<LaboratoryAnalyses />} />
           <Route path="/laboratory/results" element={<LaboratoryResults />} />
           <Route path="/laboratory/reimbursements" element={<LaboratoryReimbursements />} />
+          
+          {/* Report Routes */}
+          <Route path="/reports/patient" element={<PatientReports />} />
+          <Route path="/reports/doctor" element={<DoctorReports />} />
+          <Route path="/reports/pharmacist" element={<PharmacistReports />} />
+          <Route path="/reports/insurance" element={<InsuranceReports />} />
+          <Route path="/reports/laboratory" element={<LaboratoryReports />} />
           
           {/* Catch-all route for 404s */}
           <Route path="*" element={<NotFound />} />
