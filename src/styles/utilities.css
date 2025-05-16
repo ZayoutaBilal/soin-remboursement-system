@@ -1,0 +1,7 @@
+
+@layer utilities {
+  /* Utility classes that don't fit into the other categories */
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}

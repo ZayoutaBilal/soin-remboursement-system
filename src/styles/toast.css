@@ -1,0 +1,50 @@
+
+@layer components {
+  /* Toast variants */
+  .toast-success {
+    @apply bg-emerald-50 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-200;
+  }
+  
+  .toast-error {
+    @apply bg-red-50 dark:bg-red-900/30 border-red-300 dark:border-red-600 text-red-800 dark:text-red-200;
+  }
+  
+  .toast-warning {
+    @apply bg-amber-50 dark:bg-amber-900/30 border-amber-300 dark:border-amber-600 text-amber-800 dark:text-amber-200;
+  }
+  
+  .toast-info {
+    @apply bg-sky-50 dark:bg-sky-900/30 border-sky-300 dark:border-sky-600 text-sky-800 dark:text-sky-200;
+  }
+  
+  /* Click indicator for toasts */
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  /* Enhanced toast size and visibility */
+  .larger-toast {
+    min-width: 340px !important;
+    max-width: 450px !important;
+    padding: 1rem 1.25rem !important;
+    font-size: 1.05rem !important;
+    border-width: 2px !important;
+  }
+  
+  .toast-title {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .toast-description {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .toast-icon {
+    min-width: 28px !important;
+    min-height: 28px !important;
+    margin-right: 0.75rem !important;
+  }
+}

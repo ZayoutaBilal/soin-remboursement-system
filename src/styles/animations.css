@@ -1,0 +1,62 @@
+
+@layer components {
+  /* Animation classes */
+  .animate-fade-in {
+    @apply animate-[fade-in_0.3s_ease-out];
+  }
+  
+  .animate-slide-in {
+    @apply animate-[slide-in-right_0.3s_ease-out];
+  }
+  
+  .animate-scale-in {
+    @apply animate-[scale-in_0.2s_ease-out];
+  }
+  
+  /* Hover animations */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .toast-hover-grow {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .toast-hover-grow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
