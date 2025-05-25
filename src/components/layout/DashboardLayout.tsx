@@ -95,8 +95,8 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
   // Different menu items based on role
   const getMenuItems = (): MenuItem[] => {
     const commonItems = [
-      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}`, highlight: false },
-      { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/profile/${role}`, highlight: true }
+      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/${role}/dashboard`, highlight: false },
+      { name: "Mon profil", icon: <User className="w-5 h-5" />, path: `/${role}/profile`, highlight: true }
     ];
 
     const roleSpecificItems: Record<UserRole, MenuItem[]> = {
@@ -197,7 +197,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
           <Button 
             variant="ghost" 
             className={`w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"}`}
-            onClick={handleLogout}
+            // onClick={handleLogout}
           >
             <LogOut className="w-5 h-5" />
             {!sidebarCollapsed && <span className="ml-3">Déconnexion</span>}
@@ -238,7 +238,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
               variant={role}
               size="sm"
               className="hidden md:flex items-center gap-2 animate-fade-in"
-              onClick={() => navigate(`/profile/${role}`)}
+              onClick={() => navigate(`/${role}/profile`)}
             >
               <User className="w-4 h-4" />
               Mon Profil

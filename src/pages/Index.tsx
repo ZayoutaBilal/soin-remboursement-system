@@ -41,17 +41,17 @@ const Index = () => {
               Votre plateforme centralisée pour la gestion médicale et le suivi patients.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row justify-center">
-              <Link to="/dashboard/patient" className="animate-scale-in">
+              <Link to="/patient/dashboard" className="animate-scale-in">
                 <button className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                   Accès Patient
                 </button>
               </Link>
-              <Link to="/dashboard/doctor" className="animate-scale-in delay-100">
+              <Link to="/doctor/dashboard" className="animate-scale-in delay-100">
                 <button className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                   Accès Médecin
                 </button>
               </Link>
-              <Link to="/dashboard/pharmacist" className="animate-scale-in delay-200">
+              <Link to="/pharmacist/dashboard" className="animate-scale-in delay-200">
                 <button className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                   Accès Pharmacien
                 </button>
@@ -64,7 +64,7 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold mb-10 text-center">Accès par profil</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-              <Link to="/dashboard/patient" className="card-hover transition-all">
+              <Link to="/patient/dashboard" className="card-hover transition-all">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-border/50 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,7 +76,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              <Link to="/dashboard/doctor" className="card-hover transition-all">
+              <Link to="/doctor/dashboard" className="card-hover transition-all">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-border/50 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,7 +88,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              <Link to="/dashboard/pharmacist" className="card-hover transition-all">
+              <Link to="/pharmacist/dashboard" className="card-hover transition-all">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-border/50 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -100,7 +100,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              <Link to="/dashboard/laboratory" className="card-hover transition-all">
+              <Link to="/laboratory/dashboard" className="card-hover transition-all">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-border/50 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -112,7 +112,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              <Link to="/dashboard/insurance" className="card-hover transition-all">
+              <Link to="/insurance/dashboard" className="card-hover transition-all">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-border/50 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,19 +131,19 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Accédez à votre profil</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              <Link to="/profile/patient" className="btn-profile bg-gradient-to-r from-pink-500 to-pink-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
+              <Link to="/patient/profile" className="btn-profile bg-gradient-to-r from-pink-500 to-pink-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
                 Profil Patient
               </Link>
-              <Link to="/profile/doctor" className="btn-profile bg-gradient-to-r from-purple-500 to-purple-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
+              <Link to="/doctor/profile" className="btn-profile bg-gradient-to-r from-purple-500 to-purple-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
                 Profil Médecin
               </Link>
-              <Link to="/profile/pharmacist" className="btn-profile bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
+              <Link to="/pharmacist/profile" className="btn-profile bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
                 Profil Pharmacien
               </Link>
-              <Link to="/profile/laboratory" className="btn-profile bg-gradient-to-r from-amber-500 to-amber-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
+              <Link to="/laboratory/profile" className="btn-profile bg-gradient-to-r from-amber-500 to-amber-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
                 Profil Laboratoire
               </Link>
-              <Link to="/profile/insurance" className="btn-profile bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
+              <Link to="/insurance/profile" className="btn-profile bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-transform hover:-translate-y-1">
                 Profil Assurance
               </Link>
             </div>

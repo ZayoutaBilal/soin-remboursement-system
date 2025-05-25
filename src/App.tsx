@@ -63,29 +63,33 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<DoctorDashboard />} />
           <Route path="/ui" element={<UIShowcase />} />
           
           {/* Dashboard Routes */}
-          <Route path="/dashboard/patient" element={<PatientDashboard />} />
-          <Route path="/dashboard/doctor" element={<DoctorDashboard />} />
-          <Route path="/dashboard/pharmacist" element={<PharmacistDashboard />} />
-          <Route path="/dashboard/insurance" element={<InsuranceDashboard />} />
-          <Route path="/dashboard/laboratory" element={<LaboratoryDashboard />} />
+          {/*<Route path="/dashboard/patient" element={<PatientDashboard />} />*/}
+          {/*<Route path="/dashboard/doctor" element={<DoctorDashboard />} />*/}
+          {/*<Route path="/dashboard/pharmacist" element={<PharmacistDashboard />} />*/}
+          {/*<Route path="/dashboard/insurance" element={<InsuranceDashboard />} />*/}
+          {/*<Route path="/dashboard/laboratory" element={<LaboratoryDashboard />} />*/}
           
           {/* Profile Routes */}
-          <Route path="/profile/patient" element={<PatientProfile />} />
-          <Route path="/profile/doctor" element={<DoctorProfile />} />
-          <Route path="/profile/pharmacist" element={<PharmacistProfile />} />
-          <Route path="/profile/insurance" element={<InsuranceProfile />} />
-          <Route path="/profile/laboratory" element={<LaboratoryProfile />} />
+          {/*<Route path="/profile/patient" element={<PatientProfile />} />*/}
+          {/*<Route path="/profile/doctor" element={<DoctorProfile />} />*/}
+          {/*<Route path="/profile/pharmacist" element={<PharmacistProfile />} />*/}
+          {/*<Route path="/profile/insurance" element={<InsuranceProfile />} />*/}
+          {/*<Route path="/profile/laboratory" element={<LaboratoryProfile />} />*/}
           
           {/* Patient Routes */}
           <Route path="/patient/consultations" element={<PatientConsultations />} />
           <Route path="/patient/prescriptions" element={<PatientPrescriptions />} />
+          <Route path="/patient/profile" element={<PatientProfile />} />
+          <Route path="/patient/dashboard" element={<PatientDashboard />} />
           
           {/* Doctor Routes */}
           <Route path="/doctor/patients" element={<DoctorPatients />} />
+          <Route path="/doctor/profile" element={<DoctorProfile />} />
+          <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
           <Route path="/doctor/consultations" element={<DoctorConsultations />} />
           <Route path="/doctor/prescriptions" element={<DoctorPrescriptions />} />
           <Route path="/doctor/reimbursements" element={<DoctorReimbursements />} />
@@ -94,23 +98,29 @@ const App = () => (
           <Route path="/pharmacist/prescriptions" element={<PharmacistPrescriptions />} />
           <Route path="/pharmacist/medications" element={<PharmacistMedications />} />
           <Route path="/pharmacist/reimbursements" element={<PharmacistReimbursements />} />
+          <Route path="/pharmacist/profile" element={<PharmacistProfile />} />
+          <Route path="/pharmacist/dashboard" element={<PharmacistDashboard />} />
           
           {/* Insurance Routes */}
           <Route path="/insurance/claims" element={<InsuranceClaims />} />
           <Route path="/insurance/insured" element={<InsuranceInsured />} />
           <Route path="/insurance/payments" element={<InsurancePayments />} />
+          <Route path="/insurance/profile" element={<InsuranceProfile />} />
+          <Route path="/insurance/dashboard" element={<InsuranceDashboard />} />
           
           {/* Laboratory Routes */}
           <Route path="/laboratory/analyses" element={<LaboratoryAnalyses />} />
           <Route path="/laboratory/results" element={<LaboratoryResults />} />
           <Route path="/laboratory/reimbursements" element={<LaboratoryReimbursements />} />
+          <Route path="/laboratory/profile" element={<LaboratoryProfile />} />
+          <Route path="/laboratory/dashboard" element={<LaboratoryDashboard />} />
           
           {/* Report Routes */}
-          <Route path="/reports/patient" element={<PatientReports />} />
-          <Route path="/reports/doctor" element={<DoctorReports />} />
-          <Route path="/reports/pharmacist" element={<PharmacistReports />} />
-          <Route path="/reports/insurance" element={<InsuranceReports />} />
-          <Route path="/reports/laboratory" element={<LaboratoryReports />} />
+          <Route path="/patient/reports" element={<PatientReports />} />
+          <Route path="/doctor/reports" element={<DoctorReports />} />
+          <Route path="/pharmacist/reports" element={<PharmacistReports />} />
+          <Route path="/insurance/reports" element={<InsuranceReports />} />
+          <Route path="/laboratory/reports" element={<LaboratoryReports />} />
           
           {/* Catch-all route for 404s */}
           <Route path="*" element={<NotFound />} />
