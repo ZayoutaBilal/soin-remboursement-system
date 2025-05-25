@@ -54,7 +54,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
   // Different menu items based on role
   const getMenuItems = () => {
     const commonItems = [
-      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/dashboard/${role}` }
+      { name: "Tableau de bord", icon: <Home className="w-5 h-5" />, path: `/${role}/dashboard` }
     ];
 
     const roleSpecificItems = {
@@ -136,7 +136,7 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
           <Button 
             variant="outline" 
             className={`w-full justify-start ${!sidebarCollapsed ? "px-4" : "px-2 justify-center"}`}
-            onClick={handleLogout}
+            // onClick={handleLogout}
           >
             <LogOut className="w-5 h-5" />
             {!sidebarCollapsed && <span className="ml-3">Déconnexion</span>}
