@@ -11,7 +11,7 @@ const DoctorPrescriptions = () => {
     <DashboardLayout role="doctor">
       <div className="space-y-6">
         <div className="dashboard-header p-4 rounded-xl">
-          <h2 className="text-3xl font-bold tracking-tight">Prescriptions</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Ordonnances</h2>
           <p className="text-white/80">
             Gestion des ordonnances et suivi des traitements
           </p>
@@ -20,7 +20,7 @@ const DoctorPrescriptions = () => {
         {/* Search and create section */}
         <Card className="dashboard-panel">
           <CardHeader className="dashboard-panel-header">
-            <CardTitle>Rechercher une prescription</CardTitle>
+            <CardTitle>Rechercher une ordonnance</CardTitle>
             <CardDescription>
               Retrouvez une ordonnance par patient ou numéro
             </CardDescription>

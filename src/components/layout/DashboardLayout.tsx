@@ -1,4 +1,4 @@
-import { useState, ReactNode, useEffect } from "react";
+import React, { useState, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { UserRole } from "@/types/healthcare";
@@ -6,7 +6,7 @@ import { MenuItem } from "@/types/layout";
 import { 
   Home, User, FileText, PlusCircle, LogOut, Users, 
   Pill, Heart, Activity, Search, Microscope, ScrollText,
-  Moon, Sun
+  Moon, Sun, BarChart
 } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -107,23 +107,27 @@ const DashboardLayout = ({ children, role }: DashboardLayoutProps) => {
       doctor: [
         { name: "Mes Patients", icon: <Users className="w-5 h-5" />, path: `/doctor/patients`, highlight: false },
         { name: "Consultations", icon: <Activity className="w-5 h-5" />, path: `/doctor/consultations`, highlight: false },
-        { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions`, highlight: false },
-        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/doctor/reimbursements`, highlight: false }
+        { name: "Ordonnances", icon: <ScrollText className="w-5 h-5" />, path: `/doctor/prescriptions`, highlight: false },
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/doctor/reimbursements`, highlight: false },
+        { name: "Rapports", icon: <BarChart className="w-5 h-5" />, path: `/doctor/reports`, highlight: false }
       ],
       pharmacist: [
         { name: "Prescriptions", icon: <ScrollText className="w-5 h-5" />, path: `/pharmacist/prescriptions`, highlight: false },
         { name: "Médicaments", icon: <Pill className="w-5 h-5" />, path: `/pharmacist/medications`, highlight: false },
-        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/pharmacist/reimbursements`, highlight: false }
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/pharmacist/reimbursements`, highlight: false },
+        { name: "Rapports", icon: <BarChart className="w-5 h-5" />, path: `/pharmacist/reports`, highlight: false }
       ],
       insurance: [
         { name: "Demandes", icon: <FileText className="w-5 h-5" />, path: `/insurance/claims`, highlight: false },
         { name: "Assurés", icon: <Users className="w-5 h-5" />, path: `/insurance/insured`, highlight: false },
-        { name: "Paiements", icon: <FileText className="w-5 h-5" />, path: `/insurance/payments`, highlight: false }
+        { name: "Paiements", icon: <FileText className="w-5 h-5" />, path: `/insurance/payments`, highlight: false },
+        { name: "Rapports", icon: <BarChart className="w-5 h-5" />, path: `/insurance/reports`, highlight: false }
       ],
       laboratory: [
         { name: "Analyses", icon: <Search className="w-5 h-5" />, path: `/laboratory/analyses`, highlight: false },
         { name: "Résultats", icon: <FileText className="w-5 h-5" />, path: `/laboratory/results`, highlight: false },
-        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/laboratory/reimbursements`, highlight: false }
+        { name: "Remboursements", icon: <FileText className="w-5 h-5" />, path: `/laboratory/reimbursements`, highlight: false },
+        { name: "Rapports", icon: <BarChart className="w-5 h-5" />, path: `/laboratory/reports`, highlight: false }
       ]
     };
 
